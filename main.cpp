@@ -18,12 +18,12 @@ void printTensor(const tensor& grid);
 void printGame(const tensor& start_grid, const tensor& end_grid);
 
 int main() {
-    int rows = 6;
-    int cols = 6;
-    int count_ones = 3;
+    int rows = 7; //has to be greater than 2
+    int cols = 7; //has to be greater than 2
+    int max_count_ones = 9; //is the max number but has to be exactly the same for the start and end matrix to work but this problem is addressed later... ;)
 
-    tensor start_grid = genGrid(rows, cols, count_ones);
-    tensor end_grid = genGrid(rows, cols, count_ones);
+    tensor start_grid = genGrid(rows, cols, max_count_ones);
+    tensor end_grid = genGrid(rows, cols, max_count_ones);
     tensor sol_grid = solve(start_grid, end_grid);
     cout << "solution: " << endl;
     printTensor(sol_grid);
@@ -47,7 +47,6 @@ int main() {
             cin >> y;
         }
     }
-
     return 0;
 }
 
@@ -134,7 +133,6 @@ tensor gauss_jordan(tensor& mov_mat, tensor& move) {
             sol(i, j) = field(i * move.columns + j, mov_mat.columns);
         }
     }
-
     return sol;
 }
 
@@ -158,13 +156,13 @@ bool isSame(const tensor& a, const tensor& b) {
     return true;
 }
 
-tensor genGrid(int rows, int cols, int count_ones) { //fix sis
+tensor genGrid(int rows, int cols, int max_count_ones) { //fix sis
     tensor grid = tensor(rows, cols);
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             int b = rand() & 1;
-            count_ones -= b;
-            (count_ones < 0) ? grid(i, j) = 0 : grid(i, j) = b;
+            max_count_ones -= b;
+            (max_count_ones < 0) ? grid(i, j) = 0 : grid(i, j) = b;
         }
     }
     return grid;
