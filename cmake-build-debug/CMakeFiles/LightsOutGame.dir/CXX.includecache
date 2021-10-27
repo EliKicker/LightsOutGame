@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/User/Documents/GitHub/LightsOutGame/main.cpp
+cmath
+-
+iostream
+-
+random
+-
+matrix.h
+C:/Users/User/Documents/GitHub/LightsOutGame/matrix.h
+
+C:/Users/User/Documents/GitHub/LightsOutGame/matrix.h
+algorithm
+-
+vector
+-
+
